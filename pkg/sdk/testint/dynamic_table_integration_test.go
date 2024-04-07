@@ -25,7 +25,7 @@ func TestInt_DynamicTableCreateAndDrop(t *testing.T) {
 		}
 		query := "select id from " + tableTest.ID().FullyQualifiedName()
 		comment := random.Comment()
-		err := client.DynamicTables.Create(ctx, sdk.NewCreateDynamicTableRequest(name, testWarehouse(t).ID(), targetLag, query).WithOrReplace(true).WithComment(&comment))
+		err := client.DynamicTables.Create(ctx, sdk.NewCreateDynamicTableRequest(name, testWarehouse(t).ID(), targetLag, query).WithComment(&comment))
 		require.NoError(t, err)
 		t.Cleanup(func() {
 			err = client.DynamicTables.Drop(ctx, sdk.NewDropDynamicTableRequest(name))
@@ -55,7 +55,7 @@ func TestInt_DynamicTableCreateAndDrop(t *testing.T) {
 		}
 		query := "select id from " + tableTest.ID().FullyQualifiedName()
 		comment := random.Comment()
-		err := client.DynamicTables.Create(ctx, sdk.NewCreateDynamicTableRequest(name, testWarehouse(t).ID(), targetLag, query).WithOrReplace(true).WithComment(&comment))
+		err := client.DynamicTables.Create(ctx, sdk.NewCreateDynamicTableRequest(name, testWarehouse(t).ID(), targetLag, query).WithComment(&comment))
 		require.NoError(t, err)
 		t.Cleanup(func() {
 			err = client.DynamicTables.Drop(ctx, sdk.NewDropDynamicTableRequest(name))
@@ -83,7 +83,7 @@ func TestInt_DynamicTableCreateAndDrop(t *testing.T) {
 		comment := random.Comment()
 		refreshMode := sdk.DynamicTableRefreshModeFull
 		initialize := sdk.DynamicTableInitializeOnSchedule
-		err := client.DynamicTables.Create(ctx, sdk.NewCreateDynamicTableRequest(name, testWarehouse(t).ID(), targetLag, query).WithOrReplace(true).WithInitialize(initialize).WithRefreshMode(refreshMode).WithComment(&comment))
+		err := client.DynamicTables.Create(ctx, sdk.NewCreateDynamicTableRequest(name, testWarehouse(t).ID(), targetLag, query).WithInitialize(initialize).WithRefreshMode(refreshMode).WithComment(&comment))
 		require.NoError(t, err)
 		t.Cleanup(func() {
 			err = client.DynamicTables.Drop(ctx, sdk.NewDropDynamicTableRequest(name))
